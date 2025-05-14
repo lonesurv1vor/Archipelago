@@ -11,13 +11,14 @@ class CoQLocationData(NamedTuple):
 
 def level_locations(max_level: int, per_level: int) -> list[tuple[int, int]]:
     locs = []
-    for l in range(1, max_level):
-        for s in range(0, per_level):
-            locs.append((l, s))
-    # We start at level 1.0, so remove first element
-    locs = locs[1:]
-    # We end at level maxlevel.0, so add last element
-    locs.append((max_level, 0))
+    if(max_level > 1):
+        for l in range(1, max_level):
+            for s in range(0, per_level):
+                locs.append((l, s))
+        # We start at level 1.0, so remove first element
+        locs = locs[1:]
+        # We end at level maxlevel.0, so add last element
+        locs.append((max_level, 0))
     return locs
 
 def level_location_name(level: int, step: int) -> str:
