@@ -1,6 +1,7 @@
 from typing import Dict, NamedTuple, Optional
 from BaseClasses import Location
-from .Options import MAX_LOCATIONS_PER_LEVEL, MAX_MAX_LEVEL
+from . import Options
+
 
 class CoQLocation(Location):
     game: str = "Caves of Qud"
@@ -38,5 +39,5 @@ location_table: Dict[str, CoQLocationData] = {
     "Quest: Raising Indrix":                             CoQLocationData("Quest", 9),
 
     # XP Gain / Level up
-    **{level_location_name(l,s): CoQLocationData("XP",  1000 + l*10 + s) for (l,s) in level_locations(MAX_MAX_LEVEL, MAX_LOCATIONS_PER_LEVEL)},
+    **{level_location_name(l,s): CoQLocationData("XP",  1000 + l*10 + s) for (l,s) in level_locations(Options.MAX_MAX_LEVEL, Options.MAX_LOCATIONS_PER_LEVEL)},
 }
