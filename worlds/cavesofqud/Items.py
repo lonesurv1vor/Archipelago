@@ -1,5 +1,8 @@
-from typing import Dict, NamedTuple, Optional
+from typing import TYPE_CHECKING, Dict, NamedTuple, Optional
 from BaseClasses import Item, ItemClassification
+
+if TYPE_CHECKING:
+    from . import CoQWorld
 
 class CoQItem(Item):
     game: str = "Caves of Qud"
@@ -11,12 +14,12 @@ class CoQItemData(NamedTuple):
     weight: int = 1
 
 item_table: Dict[str, CoQItemData] = {
-    "Hit Points":                         CoQItemData("Stats", 1, ItemClassification.useful),
-    "Attribute Points":                   CoQItemData("Stats", 2, ItemClassification.useful),
-    "Attribute Bonus":                    CoQItemData("Stats", 3, ItemClassification.useful),
-    "Mutation Points":                    CoQItemData("Stats", 4, ItemClassification.useful),
-    "Skill Points":                       CoQItemData("Stats", 5, ItemClassification.useful),
-    "Rapid Mutation Advancement":         CoQItemData("Stats", 6, ItemClassification.useful),
+    "Hit Points":                         CoQItemData("Stats", 1, ItemClassification.progression),
+    "Attribute Points":                   CoQItemData("Stats", 2, ItemClassification.progression),
+    "Attribute Bonus":                    CoQItemData("Stats", 3, ItemClassification.progression),
+    "Mutation Points":                    CoQItemData("Stats", 4, ItemClassification.progression),
+    "Skill Points":                       CoQItemData("Stats", 5, ItemClassification.progression),
+    "Rapid Mutation Advancement":         CoQItemData("Stats", 6, ItemClassification.progression),
 
     "10 Drams of Fresh Water":            CoQItemData("Filler", 1000, ItemClassification.filler, 3),
     "Item: 50 Lead Slug":                 CoQItemData("Filler", 1001, ItemClassification.filler, 4),
@@ -56,3 +59,12 @@ def get_items_by_category(category: str) -> Dict[str, CoQItemData]:
         if data.category == category:
             item_dict.setdefault(name, data)
     return item_dict
+
+def create_item(world: "CoQWorld", name: str) -> CoQItem:
+    data = item_table[name]
+    return CoQItem(name, data.classification, data.code, world.player)
+
+def get_filler_item_name(world: "CoQWorld") -> str:
+    fillers = get_items_by_category("Filler")
+    weights = [data.weight for data in fillers.values()]
+    return world.random.choices([filler for filler in fillers.keys()], weights, k=1)[0]

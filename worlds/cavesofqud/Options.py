@@ -36,6 +36,12 @@ class Goal(Choice):
     option_quest_decoding_the_signal = 2
     default = 2
 
+goal_lookup = {
+    Goal.option_quest_argyve: "Quest: Fetch Argyve a Knickknack",
+    Goal.option_quest_more_than_a_willing_spirit: "Quest: More Than a Willing Spirit",
+    Goal.option_quest_decoding_the_signal: "Quest: Decoding the Signal",
+}
+
 @dataclass
 class CoQOptions(PerGameCommonOptions):
     max_level: MaxLevel
