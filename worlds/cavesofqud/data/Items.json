@@ -1,0 +1,144 @@
+[
+    {
+        "name": "10 Drams of Fresh Water",
+        "category": "filler",
+        "weight": 10,
+        "type": "liquid",
+        "blueprint": "water"
+    },
+    {
+        "name": "50 Lead Slug",
+        "category": "filler",
+        "type": "item",
+        "weight": 10,
+        "amount": 50,
+        "blueprint": "Lead Slug"
+    },
+    {
+        "name": "Laser Rifle",
+        "category": "filler",
+        "weight": 1,
+        "type": "item",
+        "blueprint": "Laser Rifle"
+    },
+    {
+        "name": "Sleep Gas Grenades Trap",
+        "category": "trap",
+        "weight": 10,
+        "blueprint": "SleepGasGrenade2"
+    },
+    {
+        "name": "Poison Gas Grenades Trap",
+        "category": "trap",
+        "weight": 10,
+        "blueprint": "PoisonGasGrenade2"
+    },
+    {
+        "name": "Stun Gas Grenades Trap",
+        "category": "trap",
+        "weight": 10,
+        "blueprint": "StunGasGrenade2"
+    },
+    {
+        "name": "Acid Gas Grenades Trap",
+        "category": "trap",
+        "weight": 10,
+        "blueprint": "AcidGasGrenade2"
+    },
+    {
+        "name": "Flashbang Grenades Trap",
+        "category": "trap",
+        "weight": 10,
+        "blueprint": "FlashbangGrenade2"
+    },
+    {
+        "name": "Heat Grenades Trap",
+        "category": "trap",
+        "weight": 10,
+        "blueprint": "HeatGrenade2"
+    },
+    {
+        "name": "Cold Grenades Trap",
+        "category": "trap",
+        "weight": 10,
+        "blueprint": "ColdGrenade2"
+    },
+    {
+        "name": "High Explosive Grenades Trap",
+        "category": "trap",
+        "weight": 10,
+        "blueprint": "HEGrenade2"
+    },
+    {
+        "name": "EMP Grenades Trap",
+        "category": "trap",
+        "weight": 5,
+        "blueprint": "EMPGrenade2"
+    },
+    {
+        "name": "Normality Gas Grenades Trap",
+        "category": "trap",
+        "weight": 5,
+        "blueprint": "NormalityGasGrenade2"
+    },
+    {
+        "name": "Stasis Grenades Trap",
+        "category": "trap",
+        "weight": 5,
+        "blueprint": "StasisGrenade2"
+    },
+    {
+        "name": "Sunder Grenades Trap",
+        "category": "trap",
+        "weight": 5,
+        "blueprint": "SunderGrenade2"
+    },
+    {
+        "name": "Plasma Grenades Trap",
+        "category": "trap",
+        "weight": 5,
+        "blueprint": "PlasmaGrenade2"
+    },
+    {
+        "name": "Defoliant Grenades Trap",
+        "category": "trap",
+        "weight": 5,
+        "blueprint": "DefoliantGrenade2"
+    },
+    {
+        "name": "Fungicide Grenades Trap",
+        "category": "trap",
+        "weight": 5,
+        "blueprint": "FungicideGrenade2"
+    },
+    {
+        "name": "Gravity Grenades Trap",
+        "category": "trap",
+        "weight": 5,
+        "blueprint": "GravityGrenade2"
+    },
+    {
+        "name": "Time Dilation Grenades Trap",
+        "category": "trap",
+        "weight": 5,
+        "blueprint": "TimeDilationGrenade2"
+    },
+    {
+        "name": "Glitter Grenades Trap",
+        "category": "trap",
+        "weight": 5,
+        "blueprint": "GlitterGrenade2"
+    },
+    {
+        "name": "Phase Grenades Trap",
+        "category": "trap",
+        "weight": 5,
+        "blueprint": "PhaseGrenade1"
+    },
+    {
+        "name": "Nuke Trap",
+        "category": "trap",
+        "weight": 1,
+        "blueprint": "HandENuke"
+    }
+]

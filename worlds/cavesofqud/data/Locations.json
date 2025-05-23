@@ -1,0 +1,93 @@
+[
+    {
+        "name": "Deliver 5 Croc Jerky",
+        "type": "delivery",
+        "blueprint": "Croc Jerky",
+        "amount": 5,
+        "minLevel": 2
+    },
+    {
+        "name": "Deliver 5 Boar Jerky",
+        "type": "delivery",
+        "blueprint": "Boar Jerky",
+        "amount": 5,
+        "minLevel": 2
+    },
+    {
+        "name": "Deliver 5 Goat Jerky",
+        "type": "delivery",
+        "blueprint": "Goat Jerky",
+        "amount": 5,
+        "minLevel": 2
+    },
+    {
+        "name": "Deliver 5 Crab Jerky",
+        "type": "delivery",
+        "blueprint": "Crab Jerky",
+        "amount": 5,
+        "minLevel": 5
+    },
+    {
+        "name": "Deliver 5 Bear Jerky",
+        "type": "delivery",
+        "blueprint": "Bear Jerky",
+        "amount": 5,
+        "minLevel": 2
+    },
+    {
+        "name": "Deliver a Glowsphere",
+        "type": "delivery",
+        "blueprint": "Glowsphere",
+        "minLevel": 5
+    },
+    {
+        "name": "Deliver a Metal Folding Chair",
+        "type": "delivery",
+        "blueprint": "FoldingChair"
+    },
+    {
+        "name": "Deliver a Love Injector",
+        "type": "delivery",
+        "blueprint": "LoveTonic"
+    },
+    {
+        "name": "Deliver a Blaze Injector",
+        "type": "delivery",
+        "blueprint": "BlazeTonic"
+    },
+    {
+        "name": "Deliver a Hulk Honey Injector",
+        "type": "delivery",
+        "blueprint": "HulkHoneyTonic"
+    },
+    {
+        "name": "Deliver a Salve Injector",
+        "type": "delivery",
+        "blueprint": "SalveTonic"
+    },
+    {
+        "name": "Deliver a Skulk Injector",
+        "type": "delivery",
+        "blueprint": "SkulkTonic"
+    },
+    {
+        "name": "Deliver a Sphynx Salt Injector",
+        "type": "delivery",
+        "blueprint": "SphynxSaltTonic"
+    },
+    {
+        "name": "Deliver a Shade Oil Injector",
+        "type": "delivery",
+        "blueprint": "ShadeOilTonic"
+    },
+    {
+        "name": "Deliver a Ubernostrum Injector",
+        "type": "delivery",
+        "blueprint": "UbernostrumTonic"
+    },
+    {
+        "name": "Deliver a Rubbergum Injector",
+        "type": "delivery",
+        "blueprint": "RubbergumTonic"
+    }
+]
