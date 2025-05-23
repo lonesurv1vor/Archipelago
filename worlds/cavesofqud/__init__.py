@@ -1,6 +1,6 @@
 from typing import List
 
-from BaseClasses import Entrance, Item, ItemClassification, LocationProgressType, Tutorial
+from BaseClasses import Entrance, LocationProgressType
 from worlds.AutoWorld import WebWorld, World
 
 from . import Rules
@@ -25,7 +25,6 @@ class CoQWorld(World):
     required_server_version = (0, 6, 0)
 
     item_name_to_id = {name: data.code for name, data in Items.item_table.items() if data.code is not None}
-
     location_name_to_id = {name: id for id, name in enumerate(Locations.all_locations, 1)}
 
     def fill_slot_data(self) -> dict:
@@ -44,6 +43,7 @@ class CoQWorld(World):
         # Main Quest locations
         for name in Locations.main_quests:
             loc = Locations.CoQLocation(self.player, name, self.location_name_to_id[name], qud)
+            loc.progress_type = LocationProgressType.PRIORITY
             qud.locations += [loc]
 
         # Side Quest locations
@@ -58,13 +58,6 @@ class CoQWorld(World):
             self.options.locations_per_level.value):
             loc = Locations.CoQLocation(self.player, name, self.location_name_to_id[name], qud)
             qud.locations += [loc]
-
-        # Set victory location and place event
-        victory_loc = Options.goal_lookup[self.options.goal]
-        self.get_location(victory_loc).address = None
-        self.get_location(victory_loc).place_locked_item(
-            Item("Victory", ItemClassification.progression, None, self.player)
-        )
 
         # Connect Menu to Qud
         conn = Entrance(self.player, "To Qud", menu)
