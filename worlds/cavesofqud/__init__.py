@@ -53,10 +53,9 @@ class CoQWorld(World):
                 qud.locations += [loc]
 
         # Level locations
-        for level, step in Locations.level_locations(
+        for name in Locations.xp_locations(
             self.options.max_level.value,
             self.options.locations_per_level.value):
-            name = Locations.level_location_name(level, step)
             loc = Locations.CoQLocation(self.player, name, self.location_name_to_id[name], qud)
             qud.locations += [loc]
 

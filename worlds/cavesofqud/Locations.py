@@ -7,25 +7,6 @@ from . import Options
 class CoQLocation(Location):
     game: str = "Caves of Qud"
 
-class CoQLocationData(NamedTuple):
-    category: str
-    id: Optional[int] = None
-
-def level_locations(max_level: int, per_level: int) -> list[tuple[int, int]]:
-    locs = []
-    if(max_level > 1):
-        for l in range(1, max_level):
-            for s in range(0, per_level):
-                locs.append((l, s))
-        # We start at level 1.0, so remove first element
-        locs = locs[1:]
-        # We end at level maxlevel.0, so add last element
-        locs.append((max_level, 0))
-    return locs
-
-def level_location_name(level: int, step: int) -> str:
-    return f"Level {level}.{step}"
-
 main_quests: list[str] = [
     "Quest: Fetch Argyve a Knickknack: Find a Knickknack",
     "Quest: Fetch Argyve a Knickknack: Return to Argyve",
@@ -62,15 +43,28 @@ side_quests: list[list[str]] = [[
     ]
 ]
 
-# TODO rename
-xp_locations: list[str] = [
-    level_location_name(l,s) for (l,s) in level_locations(Options.MAX_MAX_LEVEL, Options.MAX_LOCATIONS_PER_LEVEL)
-]
+def _split_levels(max_level: int, per_level: int) -> list[tuple[int, int]]:
+    locs = []
+    if(max_level > 1):
+        for l in range(1, max_level):
+            for s in range(0, per_level):
+                locs.append((l, s))
+        # We start at level 1.0, so remove first element
+        locs = locs[1:]
+        # We end at level maxlevel.0, so add last element
+        locs.append((max_level, 0))
+    return locs
+
+# TODO rename and replace with Iterable
+def xp_locations(max_level: int, max_locations_per_level: int) -> list[str]:
+    return [f"Level {level}.{step}" for (level, step)
+        in _split_levels(max_level, max_locations_per_level)]
+
 
 all_locations: Iterable[str] = itertools.chain(
     main_quests,
     *side_quests,
-    xp_locations,
+    xp_locations(Options.MAX_MAX_LEVEL, Options.MAX_LOCATIONS_PER_LEVEL),
 )
 
 
