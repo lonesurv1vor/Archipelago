@@ -37,9 +37,9 @@ class Goal(Choice):
     default = 2
 
 goal_lookup = {
-    Goal.option_quest_argyve: "Quest: Fetch Argyve a Knickknack: Return to Argyve",
-    Goal.option_quest_more_than_a_willing_spirit: "Quest: More Than a Willing Spirit: Return to Grit Gate",
-    Goal.option_quest_decoding_the_signal: "Quest: Decoding the Signal: Return to Grit Gate",
+    Goal.option_quest_argyve: "Fetch Argyve a Knickknack - Return to Argyve",
+    Goal.option_quest_more_than_a_willing_spirit: "More Than a Willing Spirit - Return to Grit Gate",
+    Goal.option_quest_decoding_the_signal: "Decoding the Signal - Return to Grit Gate",
 }
 
 @dataclass

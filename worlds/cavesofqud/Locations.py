@@ -8,38 +8,38 @@ class CoQLocation(Location):
     game: str = "Caves of Qud"
 
 main_quests: list[str] = [
-    "Quest: Fetch Argyve a Knickknack: Find a Knickknack",
-    "Quest: Fetch Argyve a Knickknack: Return to Argyve",
+    "Fetch Argyve a Knickknack - Find a Knickknack",
+    "Fetch Argyve a Knickknack - Return to Argyve",
 
-    "Quest: Fetch Argyve Another Knickknack: Find Another Knickknack",
-    "Quest: Fetch Argyve Another Knickknack: Return to Argyve",
-    "Quest: Weirdwire Conduit... Eureka!: Find 200 Feet of Wire",
-    "Quest: Weirdwire Conduit... Eureka!: Return to Argyve",
+    "Fetch Argyve Another Knickknack - Find Another Knickknack",
+    "Fetch Argyve Another Knickknack - Return to Argyve",
+    "Weirdwire Conduit... Eureka! - Find 200 Feet of Wire",
+    "Weirdwire Conduit... Eureka! - Return to Argyve",
 
-    "Quest: A Canticle for Barathrum: Travel to Grit Gate",
-    "Quest: A Canticle for Barathrum: Locate the Barathrumite Enclave" ,
-    "Quest: A Canticle for Barathrum: Speak with the Barathrumites",
+    "A Canticle for Barathrum - Travel to Grit Gate",
+    "A Canticle for Barathrum - Locate the Barathrumite Enclave" ,
+    "A Canticle for Barathrum - Speak with the Barathrumites",
 
-    "Quest: More Than a Willing Spirit: Travel to Golgotha",
-    "Quest: More Than a Willing Spirit: Find a Dysfunctional Waydroid",
-    "Quest: More Than a Willing Spirit: Repair the Waydroid",
-    "Quest: More Than a Willing Spirit: Return to Grit Gate",
-    "Quest: Decoding the Signal: Get Q Girl's Instructions onto the Data Disk",
-    "Quest: Decoding the Signal: Locate the Mechanimist Compound at Bethesda Susa",
-    "Quest: Decoding the Signal: Decode the Signal",
-    "Quest: Decoding the Signal: Return to Grit Gate",
+    "More Than a Willing Spirit - Travel to Golgotha",
+    "More Than a Willing Spirit - Find a Dysfunctional Waydroid",
+    "More Than a Willing Spirit - Repair the Waydroid",
+    "More Than a Willing Spirit - Return to Grit Gate",
+    "Decoding the Signal - Get Q Girl's Instructions onto the Data Disk",
+    "Decoding the Signal - Locate the Mechanimist Compound at Bethesda Susa",
+    "Decoding the Signal - Decode the Signal",
+    "Decoding the Signal - Return to Grit Gate",
 ]
 
 side_quests: list[list[str]] = [[
-        "Quest: What's Eating the Watervine?: Travel to Red Rock",
-        "Quest: What's Eating the Watervine?: Find the Vermin",
-        "Quest: What's Eating the Watervine?: Get a Corpse",
-        "Quest: What's Eating the Watervine?: Return with the Corpse",
+        "What's Eating the Watervine? - Travel to Red Rock",
+        "What's Eating the Watervine? - Find the Vermin",
+        "What's Eating the Watervine? - Get a Corpse",
+        "What's Eating the Watervine? - Return with the Corpse",
     ],[
-        "Quest: O Glorious Shekhinah!: Make a Pilgrimage to the Six Day Stilt",
+        "O Glorious Shekhinah! - Make a Pilgrimage to the Six Day Stilt",
     ],[
-        "Quest: Raising Indrix: Find Mamon Souldrinker",
-        "Quest: Raising Indrix: Recover the Amaranthine Prism"
+        "Raising Indrix - Find Mamon Souldrinker",
+        "Raising Indrix - Recover the Amaranthine Prism"
     ]
 ]
 
