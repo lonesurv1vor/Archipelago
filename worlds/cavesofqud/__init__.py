@@ -25,7 +25,8 @@ class CoQWorld(World):
     required_server_version = (0, 6, 0)
 
     item_name_to_id = {name: data.code for name, data in Items.item_table.items() if data.code is not None}
-    location_name_to_id = {name: data.id for name, data in Locations.location_table.items() if data.id is not None}
+
+    location_name_to_id = {name: id for id, name in enumerate(Locations.all_locations, 1)}
 
     def fill_slot_data(self) -> dict:
         return self.options.as_dict(*[name for name in self.options_dataclass.type_hints.keys()])
@@ -40,22 +41,24 @@ class CoQWorld(World):
         menu = Region("Menu", self.player, self.multiworld)
         qud = Region("Qud", self.player, self.multiworld)
 
+        # Main Quest locations
+        for name in Locations.main_quests:
+            loc = Locations.CoQLocation(self.player, name, self.location_name_to_id[name], qud)
+            qud.locations += [loc]
+
+        # Side Quest locations
+        for q in Locations.side_quests:
+            for name in q:
+                loc = Locations.CoQLocation(self.player, name, self.location_name_to_id[name], qud)
+                qud.locations += [loc]
+
         # Level locations
         for level, step in Locations.level_locations(
             self.options.max_level.value,
             self.options.locations_per_level.value):
-
-            loc_name = Locations.level_location_name(level, step)
-            loc = Locations.CoQLocation(self.player, loc_name, Locations.location_table[loc_name].id, qud)
+            name = Locations.level_location_name(level, step)
+            loc = Locations.CoQLocation(self.player, name, self.location_name_to_id[name], qud)
             qud.locations += [loc]
-
-        # Quest locations
-        for name, data in Locations.location_table.items():
-            if data.category != "Quest":
-                continue
-            loc = Locations.CoQLocation(self.player, name, data.id, qud)
-            qud.locations += [loc]
-
 
         # Set victory location and place event
         victory_loc = Options.goal_lookup[self.options.goal]

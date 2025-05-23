@@ -1,5 +1,5 @@
 import itertools
-from typing import Dict, NamedTuple, Optional
+from typing import Dict, Iterable, NamedTuple, Optional
 from BaseClasses import Location
 from . import Options
 
@@ -61,17 +61,18 @@ side_quests: list[list[str]] = [[
         "Quest: Raising Indrix: Recover the Amaranthine Prism"
     ]
 ]
-            
-location_table: Dict[str, CoQLocationData] = {
-    # Main quests
-    **{name: CoQLocationData("Quest",  1000 + i) for (i, name) in enumerate(main_quests)},
 
-    # Side Quests
-    **{name: CoQLocationData("Quest",  2000 + i) for (i, name) in enumerate(itertools.chain(*side_quests))},
+# TODO rename
+xp_locations: list[str] = [
+    level_location_name(l,s) for (l,s) in level_locations(Options.MAX_MAX_LEVEL, Options.MAX_LOCATIONS_PER_LEVEL)
+]
 
-    # XP Gain / Level up
-    **{level_location_name(l,s): CoQLocationData("XP",  1000 + l*10 + s) for (l,s) in level_locations(Options.MAX_MAX_LEVEL, Options.MAX_LOCATIONS_PER_LEVEL)},
-}
+all_locations: Iterable[str] = itertools.chain(
+    main_quests,
+    *side_quests,
+    xp_locations,
+)
+
 
 # Early game?
 
