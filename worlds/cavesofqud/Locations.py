@@ -1,3 +1,4 @@
+import itertools
 from typing import Dict, NamedTuple, Optional
 from BaseClasses import Location
 from . import Options
@@ -24,20 +25,75 @@ def level_locations(max_level: int, per_level: int) -> list[tuple[int, int]]:
 
 def level_location_name(level: int, step: int) -> str:
     return f"Level {level}.{step}"
+
+main_quests: list[str] = [
+    "Quest: Fetch Argyve a Knickknack: Find a Knickknack",
+    "Quest: Fetch Argyve a Knickknack: Return to Argyve",
+
+    "Quest: Fetch Argyve Another Knickknack: Find Another Knickknack",
+    "Quest: Fetch Argyve Another Knickknack: Return to Argyve",
+    "Quest: Weirdwire Conduit... Eureka!: Find 200 Feet of Wire",
+    "Quest: Weirdwire Conduit... Eureka!: Return to Argyve",
+
+    "Quest: A Canticle for Barathrum: Travel to Grit Gate",
+    "Quest: A Canticle for Barathrum: Locate the Barathrumite Enclave" ,
+    "Quest: A Canticle for Barathrum: Speak with the Barathrumites",
+
+    "Quest: More Than a Willing Spirit: Travel to Golgotha",
+    "Quest: More Than a Willing Spirit: Find a Dysfunctional Waydroid",
+    "Quest: More Than a Willing Spirit: Repair the Waydroid",
+    "Quest: More Than a Willing Spirit: Return to Grit Gate",
+    "Quest: Decoding the Signal: Get Q Girl's Instructions onto the Data Disk",
+    "Quest: Decoding the Signal: Locate the Mechanimist Compound at Bethesda Susa",
+    "Quest: Decoding the Signal: Decode the Signal",
+    "Quest: Decoding the Signal: Return to Grit Gate",
+]
+
+side_quests: list[list[str]] = [[
+        "Quest: What's Eating the Watervine?: Travel to Red Rock",
+        "Quest: What's Eating the Watervine?: Find the Vermin",
+        "Quest: What's Eating the Watervine?: Get a Corpse",
+        "Quest: What's Eating the Watervine?: Return with the Corpse",
+    ],[
+        "Quest: O Glorious Shekhinah!: Make a Pilgrimage to the Six Day Stilt",
+    ],[
+        "Quest: Raising Indrix: Find Mamon Souldrinker",
+        "Quest: Raising Indrix: Recover the Amaranthine Prism"
+    ]
+]
             
 location_table: Dict[str, CoQLocationData] = {
-    # Quests
-    "Quest: Fetch Argyve a Knickknack":                  CoQLocationData("Quest", 1),
-    "Quest: Fetch Argyve Another Knickknack":            CoQLocationData("Quest", 2),
-    "Quest: Weirdwire Conduit... Eureka!":               CoQLocationData("Quest", 3),
-    "Quest: A Canticle for Barathrum":                   CoQLocationData("Quest", 4),
-    "Quest: More Than a Willing Spirit":                 CoQLocationData("Quest", 5),
-    "Quest: Decoding the Signal":                        CoQLocationData("Quest", 6),
+    # Main quests
+    **{name: CoQLocationData("Quest",  1000 + i) for (i, name) in enumerate(main_quests)},
 
-    "Quest: O Glorious Shekhinah!":                      CoQLocationData("Quest", 7),
-    "Quest: What's Eating the Watervine?":               CoQLocationData("Quest", 8),
-    "Quest: Raising Indrix":                             CoQLocationData("Quest", 9),
+    # Side Quests
+    **{name: CoQLocationData("Quest",  2000 + i) for (i, name) in enumerate(itertools.chain(*side_quests))},
 
     # XP Gain / Level up
     **{level_location_name(l,s): CoQLocationData("XP",  1000 + l*10 + s) for (l,s) in level_locations(Options.MAX_MAX_LEVEL, Options.MAX_LOCATIONS_PER_LEVEL)},
 }
+
+# Early game?
+
+# Deliver 5 bear jerky
+# Deliver 5 croc jerky
+# Deliver 5 crab jerky
+# Deliver 5 boar jerky
+# Deliver 5 goat jerky
+
+# mid game
+
+# Deliver 1 congealed blaze
+# Deliver 1 congealed hulk honey
+# Deliver 1 congealed love
+# Deliver 1 congealed rubbergum
+# Deliver 1 congealed salve
+# Deliver 1 congealed shade oil
+
+# Find x lead slugs / shotgun shells / boomrose arrow / carbide arrow/ steel arrow / HE Missile
+# Find injectors
+# Find liquids
+# Find artifacts: metal folding chair, plastic tree
+# glowsphere, floating glowsphere
+
+# Kill crocodiles, snapjaws, baboons
