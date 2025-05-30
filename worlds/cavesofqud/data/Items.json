@@ -4,15 +4,16 @@
         "category": "filler",
         "weight": 10,
         "type": "liquid",
-        "blueprint": "water"
+        "blueprint": "water",
+        "amount": 10
     },
     {
         "name": "50 Lead Slug",
         "category": "filler",
         "type": "item",
         "weight": 10,
-        "amount": 50,
-        "blueprint": "Lead Slug"
+        "blueprint": "Lead Slug",
+        "amount": 50
     },
     {
         "name": "Laser Rifle",
