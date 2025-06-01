@@ -41,53 +41,69 @@
         "minLevel": 5
     },
     {
+        "name": "Deliver a Floating Glowsphere",
+        "type": "delivery",
+        "blueprint": "Floating Glowsphere",
+        "minLevel": 15
+    },
+    {
         "name": "Deliver a Metal Folding Chair",
         "type": "delivery",
-        "blueprint": "FoldingChair"
+        "blueprint": "FoldingChair",
+        "minLevel": 5
     },
     {
         "name": "Deliver a Love Injector",
         "type": "delivery",
-        "blueprint": "LoveTonic"
+        "blueprint": "LoveTonic",
+        "minLevel": 8
     },
     {
         "name": "Deliver a Blaze Injector",
         "type": "delivery",
-        "blueprint": "BlazeTonic"
+        "blueprint": "BlazeTonic",
+        "minLevel": 8
     },
     {
         "name": "Deliver a Hulk Honey Injector",
         "type": "delivery",
-        "blueprint": "HulkHoneyTonic"
+        "blueprint": "HulkHoneyTonic",
+        "minLevel": 8
     },
     {
         "name": "Deliver a Salve Injector",
         "type": "delivery",
-        "blueprint": "SalveTonic"
+        "blueprint": "SalveTonic",
+        "minLevel": 6
     },
     {
         "name": "Deliver a Skulk Injector",
         "type": "delivery",
-        "blueprint": "SkulkTonic"
+        "blueprint": "SkulkTonic",
+        "minLevel": 8
     },
     {
         "name": "Deliver a Sphynx Salt Injector",
         "type": "delivery",
-        "blueprint": "SphynxSaltTonic"
+        "blueprint": "SphynxSaltTonic",
+        "minLevel": 8
     },
     {
         "name": "Deliver a Shade Oil Injector",
         "type": "delivery",
-        "blueprint": "ShadeOilTonic"
+        "blueprint": "ShadeOilTonic",
+        "minLevel": 8
     },
     {
         "name": "Deliver a Ubernostrum Injector",
         "type": "delivery",
-        "blueprint": "UbernostrumTonic"
+        "blueprint": "UbernostrumTonic",
+        "minLevel": 12
     },
     {
         "name": "Deliver a Rubbergum Injector",
         "type": "delivery",
-        "blueprint": "RubbergumTonic"
+        "blueprint": "RubbergumTonic",
+        "minLevel": 8
     }
 ]
