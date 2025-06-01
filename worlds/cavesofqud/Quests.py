@@ -56,7 +56,7 @@ def quest_unlock_item(name: str) -> str:
 # Max level is last required quest level + some extra
 # TODO
 def max_level(world: "CoQWorld") -> int:
-    return main_quests_table[goal_lookup[world.options.goal]] + 8
+    return main_quests_table[goal_lookup[world.options.goal]] + world.options.extra_location_levels
 
 # These all stand by themselves, no logic other than the level requirement per step. There
 # are no unlocks for these, so no deadlock possible.
