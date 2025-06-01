@@ -6,6 +6,17 @@ from . import Quests
 MAX_MAX_LEVEL = 50
 MAX_LOCATIONS_PER_LEVEL = 10
 
+
+class Goal(Choice):
+    """
+    Determines the win condition
+    """
+    display_name = "Goal"
+    option_quest_argyve = 0
+    option_quest_more_than_a_willing_spirit = 1
+    option_quest_decoding_the_signal = 2
+    default = 2
+
 class LocationsPerLevel(Range):
     """
     Determines the number of locations to check when gaining XP.
@@ -18,15 +29,16 @@ class LocationsPerLevel(Range):
     range_end = MAX_LOCATIONS_PER_LEVEL
     default = 5
 
-class Goal(Choice):
+class ExtraLocationLevels(Range):
     """
-    Determines the win condition
+    Determines the number of extra levels with locations beyond the in-logic level for the final
+    goal quest step (selected by the goal option). This also controls the extra amount of stat ups
+    that are in the item pool.
     """
-    display_name = "Goal"
-    option_quest_argyve = 0
-    option_quest_more_than_a_willing_spirit = 1
-    option_quest_decoding_the_signal = 2
-    default = 2
+    display_name = "Extra levels beyond the final quest"
+    range_start = 0
+    range_end = 20
+    default = 8
 
 class TrapPercentage(Range):
     """
@@ -40,7 +52,8 @@ class TrapPercentage(Range):
 
 @dataclass
 class CoQOptions(PerGameCommonOptions):
-    locations_per_level: LocationsPerLevel
     goal: Goal
+    locations_per_level: LocationsPerLevel
+    extra_location_levels: ExtraLocationLevels
     trap_percentage: TrapPercentage
     # death_link: DeathLink 
