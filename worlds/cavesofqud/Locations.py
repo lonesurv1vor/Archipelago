@@ -37,9 +37,8 @@ def xp_locations(frm: int, to: int, per_level: int) -> Iterable[str]:
 
 all_locations: Iterable[str] = itertools.chain(
     Quests.main_quests_table.keys(),
-    *Quests.side_quests,
+    Quests.side_quests_table.keys(),
     [i.name for i in static_locations],
     xp_locations(1, Options.MAX_MAX_LEVEL, Options.MAX_LOCATIONS_PER_LEVEL),
 )
 
-# Plastic Treem FLoating Glowsphere

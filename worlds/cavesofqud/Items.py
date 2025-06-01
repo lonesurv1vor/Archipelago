@@ -2,8 +2,9 @@ import itertools
 import json
 import os
 from typing import TYPE_CHECKING, Dict, Iterable, NamedTuple, Optional
-from BaseClasses import Item, ItemClassification
+from BaseClasses import Item, ItemClassification, CollectionState
 from . import Quests
+from . import Regions
 import pkgutil
 
 if TYPE_CHECKING:
@@ -16,7 +17,6 @@ class CoQItemData(NamedTuple):
     name: str
     category: str
     weight: int = 1
-
 
 item_data = pkgutil.get_data(__name__, "data/Items.json")
 static_items = [CoQItemData(
@@ -40,6 +40,18 @@ all_items: Iterable[str] = [
     *[Quests.quest_unlock_item(name) for name in Quests.main_quests_table.keys()],
 ]
 
+def levelup_levels(max_level: int) -> list[int]:
+    return [l for l in range(2, max_level + 1)]
+
+def stat_items_total(max_level: int) -> int:
+    return sum([len(stat_items_on_levelup(l)) for l in levelup_levels(max_level)])
+
+def stat_items_count(state: CollectionState, player: int) -> int:
+    return sum([state.count(item, player) for item in stat_items])
+
+def has_enough_stats_for_level(level: int, state: CollectionState, world: "CoQWorld") -> bool:
+    return stat_items_count(state, world.player) / stat_items_total(Quests.max_level(world)) >= (level - 1) / Quests.max_level(world)
+
 def stat_items_on_levelup(level: int) -> list[CoQItem]:
     items = ["Hit Points", "Mutation Points", "Skill Points"]
     if (level + 3) % 6 == 0:
@@ -60,3 +72,23 @@ def create_filler_item(world: "CoQWorld") -> CoQItem:
     weights = [data.weight for data in static_items if data.category == category]
     name = world.random.choices([data.name for data in static_items if data.category == category], weights, k=1)[0]
     return CoQItem(name, ItemClassification.filler, world.item_name_to_id[name], world.player)
+
+def create_items(world: "CoQWorld"):
+    item_pool: List[CoQItem] = []
+    total_locations = len(world.multiworld.get_unfilled_locations(world.player))
+
+    # Main quest unlock items
+    for quest in Quests.main_quests(world):
+        item_name = Quests.quest_unlock_item(quest)
+        item_pool += [CoQItem(item_name, ItemClassification.progression, world.item_name_to_id[item_name], world.player)]
+
+    # Stat ups from level ups
+    for level in levelup_levels(Quests.max_level(world)):
+        item_pool += create_stat_items_on_levelup(world, level)
+
+    # Fill up with fillers
+    while len(item_pool) < total_locations:
+        item_pool += [create_filler_item(world)]
+
+    world.multiworld.itempool += item_pool
+

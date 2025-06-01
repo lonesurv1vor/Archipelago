@@ -2,6 +2,7 @@ from collections import deque
 import itertools
 from typing import TYPE_CHECKING, Dict, Iterable, NamedTuple
 from BaseClasses import Location
+
 from . import Options
 
 if TYPE_CHECKING:
@@ -55,18 +56,21 @@ def quest_unlock_item(name: str) -> str:
 # Max level is last required quest level + some extra
 # TODO
 def max_level(world: "CoQWorld") -> int:
-    return main_quests_table[goal_lookup[world.options.goal]] + 10
+    return main_quests_table[goal_lookup[world.options.goal]] + 8
 
-# TODO
-side_quests: list[list[str]] = [[
-        "What's Eating the Watervine? - Travel to Red Rock",
-        "What's Eating the Watervine? - Find the Vermin",
-        "What's Eating the Watervine? - Get a Corpse",
-        "What's Eating the Watervine? - Return with the Corpse",
-    ],[
-        "O Glorious Shekhinah! - Make a Pilgrimage to the Six Day Stilt",
-    ],[
-        "Raising Indrix - Find Mamon Souldrinker",
-        "Raising Indrix - Recover the Amaranthine Prism"
-    ]
-]
+# These all stand by themselves, no logic other than the level requirement per step. There
+# are no unlocks for these, so no deadlock possible.
+side_quests_table: Dict[str, int] = {
+    "What's Eating the Watervine?~Travel to Red Rock": 1,
+    "What's Eating the Watervine?~Find the Vermin": 3,
+    "What's Eating the Watervine?~Get a Corpse": 3,
+    "What's Eating the Watervine?~Return with the Corpse": 5,
+    "O Glorious Shekhinah!~Make a Pilgrimage to the Six Day Stilt": 3,
+    "Raising Indrix~Find Mamon Souldrinker": 15,
+    "Raising Indrix~Recover the Amaranthine Prism": 15
+}
+
+def side_quests(world: "CoQWorld") -> Iterable[str]:
+    for name, level in side_quests_table.items():
+        if level <= max_level(world):
+            yield name
