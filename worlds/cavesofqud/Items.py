@@ -16,14 +16,14 @@ class CoQItem(Item):
 class CoQItemData(NamedTuple):
     name: str
     category: str
-    weight: int = 1
+    weight: int
 
 item_data = pkgutil.get_data(__name__, "data/Items.json")
-static_items = [CoQItemData(
-    name = item["name"],
+static_items: Dict[str, CoQItemData] = {name: CoQItemData(
+    name = name,
     category = item["category"],
     weight = item["weight"] if "weight" in item else 1,
-) for item in json.loads(item_data)]
+) for name, item in json.loads(item_data).items()}
 
 stat_items = [
     "Hit Points",
@@ -36,7 +36,7 @@ stat_items = [
 
 all_items: Iterable[str] = [
     *stat_items,
-    *[i.name for i in static_items],
+    *[i for i in static_items.keys()],
     *[Quests.quest_unlock_item(name) for name in Quests.main_quests_table.keys()],
 ]
 
@@ -69,8 +69,8 @@ def create_stat_items_on_levelup(world: "CoQWorld", level: int) -> list[CoQItem]
 
 def create_filler_item(world: "CoQWorld") -> CoQItem:
     category = world.random.choices(["filler", "trap"], [100 - world.options.trap_percentage, world.options.trap_percentage])[0]
-    weights = [data.weight for data in static_items if data.category == category]
-    name = world.random.choices([data.name for data in static_items if data.category == category], weights, k=1)[0]
+    weights = [data.weight for name, data in static_items.items() if data.category == category]
+    name = world.random.choices([name for name, data in static_items.items() if data.category == category], weights, k=1)[0]
     return CoQItem(name, ItemClassification.filler, world.item_name_to_id[name], world.player)
 
 def create_items(world: "CoQWorld"):

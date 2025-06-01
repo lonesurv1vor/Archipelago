@@ -68,7 +68,7 @@ def add_side_quests(world: "CoQWorld"):
 
 
 def add_delivery_quests(world: "CoQWorld"):
-    for quest in [k for k in Locations.static_locations if k.type == "delivery" and k.min_level <= Quests.max_level(world)]:
+    for quest in [k for k in Locations.static_locations.values() if k.type == "delivery" and k.min_level <= Quests.max_level(world)]:
         region = world.get_region(level_region_name(quest.min_level))
         quest_loc = Locations.CoQLocation(world.player, quest.name, world.location_name_to_id[quest.name], region)
         quest_loc.progress_type = LocationProgressType.DEFAULT

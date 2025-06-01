@@ -1,6 +1,6 @@
 import itertools
 import json
-from typing import Iterable, NamedTuple
+from typing import Iterable, NamedTuple, Dict
 from BaseClasses import Location
 from . import Options
 from . import Quests
@@ -9,19 +9,17 @@ import pkgutil
 class CoQLocation(Location):
     game: str = "Caves of Qud"
 
-class CoqLocationData(NamedTuple):
+class CoQLocationData(NamedTuple):
     name: str
     type: str
-    min_level: int | None = None
-    max_level: int | None = None
+    min_level: int
 
 location_data = pkgutil.get_data(__name__, "data/Locations.json")
-static_locations = [CoqLocationData(
-    name = loc["name"],
+static_locations: Dict[str, CoQLocationData] = {name: CoQLocationData(
+    name = name,
     type = loc["type"],
     min_level = loc["minLevel"] if "minLevel" in loc else 1,
-    max_level = loc["maxLevel"] if "maxLevel" in loc else Options.MAX_MAX_LEVEL,
-) for loc in json.loads(location_data)]
+) for name, loc in json.loads(location_data).items()}
 
 def xp_locations(frm: int, to: int, per_level: int) -> Iterable[str]:
     assert(frm >= 1)
@@ -38,7 +36,7 @@ def xp_locations(frm: int, to: int, per_level: int) -> Iterable[str]:
 all_locations: Iterable[str] = itertools.chain(
     Quests.main_quests_table.keys(),
     Quests.side_quests_table.keys(),
-    [i.name for i in static_locations],
+    [name for name, data in static_locations.items()],
     xp_locations(1, Options.MAX_MAX_LEVEL, Options.MAX_LOCATIONS_PER_LEVEL),
 )
 
