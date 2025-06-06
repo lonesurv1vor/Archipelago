@@ -21,6 +21,7 @@ class CoQItemData(NamedTuple):
 
 
 item_data = pkgutil.get_data(__name__, "data/Items.json")
+assert item_data is not None
 static_items: Dict[str, CoQItemData] = {
     name: CoQItemData(
         name=name,
@@ -68,7 +69,7 @@ def has_enough_stats_for_level(
     ) >= (level - 1) / Quests.max_level(world)
 
 
-def stat_items_on_levelup(level: int) -> list[CoQItem]:
+def stat_items_on_levelup(level: int) -> list[str]:
     items = ["Hit Points", "Mutation Points", "Skill Points"]
     if (level + 3) % 6 == 0:
         items.append("Attribute Points")

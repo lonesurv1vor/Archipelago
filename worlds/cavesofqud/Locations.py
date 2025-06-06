@@ -19,6 +19,7 @@ class CoQLocationData(NamedTuple):
 
 
 location_data = pkgutil.get_data(__name__, "data/Locations.json")
+assert location_data is not None
 static_locations: Dict[str, CoQLocationData] = {
     name: CoQLocationData(
         name=name,
