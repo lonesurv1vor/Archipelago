@@ -1,23 +1,51 @@
 {
-    "10 Drams of Fresh Water": {
+    "Random Item Tier 1": {
+        "category": "filler",
+        "weight": 100,
+        "type": "randomItem",
+        "population": "Junk 1"
+    },
+    "Random Item Tier 2": {
+        "category": "filler",
+        "weight": 50,
+        "type": "randomItem",
+        "population": "Junk 2"
+    },
+    "Random Item Tier 3": {
+        "category": "filler",
+        "weight": 25,
+        "type": "randomItem",
+        "population": "Junk 3"
+    },
+    "Random Item Tier 4": {
+        "category": "filler",
+        "weight": 15,
+        "type": "randomItem",
+        "population": "Junk 4"
+    },
+    "Random Item Tier 5": {
         "category": "filler",
         "weight": 10,
-        "type": "liquid",
-        "blueprint": "water",
-        "amount": 10
+        "type": "randomItem",
+        "population": "Junk 5"
     },
-    "50 Lead Slug": {
+    "Random Item Tier 6": {
         "category": "filler",
-        "type": "item",
-        "weight": 10,
-        "blueprint": "Lead Slug",
-        "amount": 50
+        "weight": 5,
+        "type": "randomItem",
+        "population": "Junk 6"
     },
-    "Laser Rifle": {
+    "Random Item Tier 7": {
+        "category": "filler",
+        "weight": 3,
+        "type": "randomItem",
+        "population": "Junk 7"
+    },
+    "Random Item Tier 8": {
         "category": "filler",
         "weight": 1,
-        "type": "item",
-        "blueprint": "Laser Rifle"
+        "type": "randomItem",
+        "population": "Junk 8"
     },
     "Sleep Gas Grenades Trap": {
         "category": "trap",
