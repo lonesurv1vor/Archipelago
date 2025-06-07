@@ -1,43 +1,43 @@
 {
     "Random Item Tier 1": {
         "category": "filler",
-        "weight": 100,
+        "weight": 1000,
         "type": "randomItem",
         "population": "Junk 1"
     },
     "Random Item Tier 2": {
         "category": "filler",
-        "weight": 50,
+        "weight": 500,
         "type": "randomItem",
         "population": "Junk 2"
     },
     "Random Item Tier 3": {
         "category": "filler",
-        "weight": 25,
+        "weight": 200,
         "type": "randomItem",
         "population": "Junk 3"
     },
     "Random Item Tier 4": {
         "category": "filler",
-        "weight": 15,
+        "weight": 75,
         "type": "randomItem",
         "population": "Junk 4"
     },
     "Random Item Tier 5": {
         "category": "filler",
-        "weight": 10,
+        "weight": 25,
         "type": "randomItem",
         "population": "Junk 5"
     },
     "Random Item Tier 6": {
         "category": "filler",
-        "weight": 5,
+        "weight": 10,
         "type": "randomItem",
         "population": "Junk 6"
     },
     "Random Item Tier 7": {
         "category": "filler",
-        "weight": 3,
+        "weight": 5,
         "type": "randomItem",
         "population": "Junk 7"
     },
@@ -203,28 +203,62 @@
         "type": "creatures",
         "population": "GoatfolkParty"
     },
-    "Fungus Trap": {
+    "Fungus Trap Tier 1": {
         "category": "trap",
-        "weight": 2,
+        "weight": 5,
         "type": "creatures",
         "population": "FungalBiome1"
     },
+    "Fungus Trap Tier 2": {
+        "category": "trap",
+        "weight": 2,
+        "type": "creatures",
+        "population": "FungalBiome2"
+    },
     "Boss Trap Tier 1": {
         "category": "trap",
-        "weight": 5,
+        "weight": 10,
         "type": "creatures",
         "population": "Tier1BossEncounter"
     },
     "Boss Trap Tier 2": {
         "category": "trap",
-        "weight": 3,
+        "weight": 5,
         "type": "creatures",
         "population": "Tier2BossEncounter"
     },
     "Boss Trap Tier 3": {
         "category": "trap",
-        "weight": 1,
+        "weight": 3,
         "type": "creatures",
         "population": "Tier3BossEncounter"
+    },
+    "Ruins Creatures Trap Tier 1": {
+        "category": "trap",
+        "weight": 20,
+        "type": "creatures",
+        "population": "Tier1RuinsCreatures",
+        "amount": 3
+    },
+    "Ruins Creatures Trap Tier 2": {
+        "category": "trap",
+        "weight": 20,
+        "type": "creatures",
+        "population": "Tier2RuinsCreatures",
+        "amount": 3
+    },
+    "Ruins Creatures Trap Tier 3": {
+        "category": "trap",
+        "weight": 10,
+        "type": "creatures",
+        "population": "Tier3RuinsCreatures",
+        "amount": 3
+    },
+    "Ruins Creatures Trap Tier 4": {
+        "category": "trap",
+        "weight": 5,
+        "type": "creatures",
+        "population": "Tier4RuinsCreatures",
+        "amount": 3
     }
 }
