@@ -97,7 +97,7 @@ def create_stat_items_on_levelup(world: "CoQWorld", level: int) -> list[CoQItem]
 def create_filler_item(world: "CoQWorld") -> CoQItem:
     category = world.random.choices(
         ["filler", "trap"],
-        [100 - world.options.trap_percentage, world.options.trap_percentage],
+        [100 - world.options.trap_percentage, float(world.options.trap_percentage)],
     )[0]
     weights = [
         data.weight for name, data in static_items.items() if data.category == category

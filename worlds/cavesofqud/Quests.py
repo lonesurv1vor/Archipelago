@@ -15,32 +15,40 @@ main_quests_table: Dict[str, int] = {
     "Fetch Argyve Another Knickknack~Find Another Knickknack": 5,
     "Fetch Argyve Another Knickknack~Return to Argyve": 5,
     "Weirdwire Conduit... Eureka!~Find 200 Feet of Wire": 7,
-    "Weirdwire Conduit... Eureka!~Return to Argyve": 7,
+    "Weirdwire Conduit... Eureka!~Return to Argyve": 8,
     "A Canticle for Barathrum~Travel to Grit Gate": 10,
     # Not controllable through conversation, skipped for now
     # "A Canticle for Barathrum~Locate the Barathrumite Enclave":10,
     "A Canticle for Barathrum~Speak with the Barathrumites": 10,
-    "More Than a Willing Spirit~Travel to Golgotha": 12,
-    "More Than a Willing Spirit~Find a Dysfunctional Waydroid": 15,
-    "More Than a Willing Spirit~Repair the Waydroid": 15,
-    "More Than a Willing Spirit~Return to Grit Gate": 15,
-    "Decoding the Signal~Get Q Girl's Instructions onto the Data Disk": 18,
-    "Decoding the Signal~Locate the Mechanimist Compound at Bethesda Susa": 20,
-    "Decoding the Signal~Decode the Signal": 22,
-    "Decoding the Signal~Return to Grit Gate": 22,
+    "More Than a Willing Spirit~Travel to Golgotha": 10,
+    "More Than a Willing Spirit~Find a Dysfunctional Waydroid": 12,
+    "More Than a Willing Spirit~Repair the Waydroid": 12,
+    "More Than a Willing Spirit~Return to Grit Gate": 12,
+    "Decoding the Signal~Get Q Girl's Instructions onto the Data Disk": 15,
+    "Decoding the Signal~Locate the Mechanimist Compound at Bethesda Susa": 18,
+    "Decoding the Signal~Decode the Signal": 20,
+    "Decoding the Signal~Return to Grit Gate": 20,
+    # The following are not all steps
+    "The Earl of Omonporch~Travel to Omonporch": 20,
+    "The Earl of Omonporch~Secure the Spindle": 22,
+    "The Earl of Omonporch~Return to Grit Gate": 25,
+    "A Call to Arms~Prepare Defenses": 25,
+    "A Call to Arms~Defend Grit Gate": 25,
 }
 
 goal_lookup = {
-    Options.Goal.option_quest_argyve: "Fetch Argyve a Knickknack~Return to Argyve",
+    Options.Goal.option_quest_weirdwire_conduit: "Weirdwire Conduit... Eureka!~Return to Argyve",
     Options.Goal.option_quest_more_than_a_willing_spirit: "More Than a Willing Spirit~Return to Grit Gate",
     Options.Goal.option_quest_decoding_the_signal: "Decoding the Signal~Return to Grit Gate",
+    Options.Goal.option_quest_the_earl_of_omonporch: "The Earl of Omonporch~Return to Grit Gate",
+    Options.Goal.option_quest_a_call_to_arms: "A Call to Arms~Defend Grit Gate",
 }
 
 
 def main_quests(world: "CoQWorld") -> Iterable[str]:
     for name in main_quests_table.keys():
         yield name
-        if name == goal_lookup[world.options.goal]:
+        if name == goal_lookup[world.options.goal.value]:
             break
 
 
@@ -52,7 +60,7 @@ def quest_unlock_item(name: str) -> str:
 # TODO
 def max_level(world: "CoQWorld") -> int:
     return (
-        main_quests_table[goal_lookup[world.options.goal]]
+        main_quests_table[goal_lookup[world.options.goal.value]]
         + world.options.extra_location_levels
     )
 

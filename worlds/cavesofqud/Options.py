@@ -12,9 +12,11 @@ class Goal(Choice):
     """
 
     display_name = "Goal"
-    option_quest_argyve = 0
+    option_quest_weirdwire_conduit = 0
     option_quest_more_than_a_willing_spirit = 1
     option_quest_decoding_the_signal = 2
+    option_quest_the_earl_of_omonporch = 3
+    option_quest_a_call_to_arms = 4
     default = 2
 
 
@@ -42,7 +44,7 @@ class ExtraLocationLevels(Range):
     display_name = "Extra levels beyond the final quest"
     range_start = 0
     range_end = 20
-    default = 8
+    default = 5
 
 
 class TrapPercentage(Range):
