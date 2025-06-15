@@ -108,7 +108,10 @@ def create_filler_item(world: "CoQWorld") -> CoQItem:
         k=1,
     )[0]
     return CoQItem(
-        name, ItemClassification.filler, world.item_name_to_id[name], world.player
+        name,
+        ItemClassification.trap if category == "trap" else ItemClassification.filler,
+        world.item_name_to_id[name],
+        world.player,
     )
 
 
