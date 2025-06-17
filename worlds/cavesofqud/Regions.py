@@ -64,9 +64,20 @@ def add_main_quests(world: "CoQWorld"):
     for quest_name in Quests.main_quests(world):
         quest_level = Quests.main_quests_table[quest_name]
         region = world.get_region(level_region_name(quest_level))
-        quest_loc = Locations.CoQLocation(
-            world.player, quest_name, world.location_name_to_id[quest_name], region
-        )
+
+        if quest_name == Quests.goal_lookup[world.options.goal]:
+            # Add victory event instead of normal location
+            quest_loc = Locations.CoQLocation(world.player, quest_name, None, region)
+            quest_loc.place_locked_item(
+                Items.CoQItem(
+                    "Victory", Items.ItemClassification.progression, None, world.player
+                )
+            )
+        else:
+            quest_loc = Locations.CoQLocation(
+                world.player, quest_name, world.location_name_to_id[quest_name], region
+            )
+
         quest_loc.access_rule = (
             lambda state,
             quest_name=quest_name,

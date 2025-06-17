@@ -1,6 +1,6 @@
 from worlds.AutoWorld import WebWorld, World
 
-from . import Items, Locations, Options, Quests, Regions
+from . import Items, Locations, Options, Regions
 
 
 class CoQWeb(WebWorld):
@@ -42,7 +42,9 @@ class CoQWorld(World):
         Items.create_items(self)
 
     def set_rules(self):
-        victory_loc = self.get_location(Quests.goal_lookup[self.options.goal])
         self.multiworld.completion_condition[self.player] = (
-            lambda state: victory_loc in state.locations_checked
+            lambda state, p=self.player: state.has("Victory", p)
         )
+
+    def create_item(self, name: str):
+        return Items.create_any_item_static(self, name)

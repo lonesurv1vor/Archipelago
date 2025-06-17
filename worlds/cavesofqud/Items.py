@@ -140,3 +140,23 @@ def create_items(world: "CoQWorld"):
         item_pool += [create_filler_item(world)]
 
     world.multiworld.itempool += item_pool
+
+
+def create_any_item_static(world: "CoQWorld", name: str) -> Item:
+    if name in static_items:
+        data = static_items[name]
+        classification = (
+            ItemClassification.trap
+            if data.category == "trap"
+            else ItemClassification.filler
+        )
+    elif name in stat_items:
+        classification = ItemClassification.progression
+    elif name in [
+        Quests.quest_unlock_item(name) for name in Quests.main_quests_table.keys()
+    ]:
+        classification = ItemClassification.progression
+    else:
+        raise Exception(f"Item {name} couldn't be found in the static table")
+
+    return CoQItem(name, classification, world.item_name_to_id[name], world.player)
